@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>TrackTube · Apontamento por QR e previsto x real da fábrica</title>
+  <meta name="description" content="O operador aponta cada etapa lendo o QR Code no celular. Você vê o previsto x real por departamento, os materiais e as paradas da fábrica.">
+  <link rel="canonical" href="https://tracktube.me/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="TrackTube">
+  <meta property="og:title" content="TrackTube · Veja o atraso da fábrica antes do dia da entrega">
+  <meta property="og:description" content="Apontamento por QR Code no celular, previsto x real por departamento, materiais e paradas da fábrica sob encomenda.">
+  <meta property="og:url" content="https://joao-araujo-appstorm.github.io/tracktube-landing-preview/">
+  <meta property="og:image" content="https://joao-araujo-appstorm.github.io/tracktube-landing-preview/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/geist-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="img/w-progresso-1600.webp" imagesrcset="img/w-progresso-960.webp 960w, img/w-progresso-1600.webp 1600w" imagesizes="(max-width: 1296px) 100vw, 1200px" media="(min-width: 761px)">
+  <link rel="preload" as="image" href="img/w-progresso-m.webp" media="(max-width: 760px)">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="stylesheet" href="css/landing.css">
+  <script defer src="js/landing.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "TrackTube",
+    "url": "https://tracktube.me/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, Android, iOS",
+    "description": "Apontamento de produção por QR Code no celular, previsto x real por departamento, check de materiais e paradas para fabricação sob encomenda."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Precisa instalar app de loja ou comprar coletor de dados?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O TrackTube roda no navegador do celular e usa a câmera para ler o QR Code. Dá para instalar na tela inicial do Android e do iPhone." } },
+      { "@type": "Question", "name": "Dá para aproveitar o cronograma que já existe?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, se ele está no MS Project. Exporte para Excel e importe: o TrackTube lê nome da tarefa, recuo, duração, início e término. A lista de materiais também entra por planilha." } },
+      { "@type": "Question", "name": "Meus dados ficam junto com os de outras empresas?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Cada empresa tem a própria instalação e o próprio banco de dados, num endereço só dela." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Ícones (traço 1.6, 24×24) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M21 20H3"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4 11V9a3 3 0 0 1 3-3h12M16 3l3 3-3 3M20 13v2a3 3 0 0 1-3 3H5M8 21l-3-3 3-3"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.7"/><path d="M4 4.5v4.2h4.2M12 8v4.5l3 1.8"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  </svg>
+
+  <header class="nav" data-nav>
+    <div class="container nav__bar">
+      <a class="brand" href="#topo" aria-label="TrackTube, início"><img class="brand__logo" src="img/tracktube-branco.webp" alt="TrackTube" width="171" height="36"></a>
+      <nav class="nav__links" aria-label="Principal">
+        <span class="nav__pill" aria-hidden="true"></span>
+        <a href="#produto">Produto</a>
+        <a href="#app">App</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#perguntas">Perguntas</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--line" href="https://wa.me/5512981622579?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20TrackTube." target="_blank" rel="noopener" data-track="cta-nav" aria-label="Agendar demonstração no WhatsApp"><span class="nav__cta-long">Agendar demonstração</span><span class="nav__cta-short">Demonstração</span><span class="nav__cta-tiny">Agendar</span><span class="chev" aria-hidden="true">»</span></a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu" data-nav-toggle>
+          <span class="nav__burger" aria-hidden="true"></span>
+          <span class="nav__burger" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__mobile" id="menu-mobile" hidden>
+      <a href="#produto">Produto<svg class="i" aria-hidden="true"><use href="#i-next"/></svg></a>
+      <a href="#app">App<svg class="i" aria-hidden="true"><use href="#i-next"/></svg></a>
+      <a href="#como-funciona">Como funciona<svg class="i" aria-hidden="true"><use href="#i-next"/></svg></a>
+      <a href="#perguntas">Perguntas<svg class="i" aria-hidden="true"><use href="#i-next"/></svg></a>
+      <div class="btn-row">
+        <a class="btn btn--white" href="https://wa.me/5512981622579?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20TrackTube." target="_blank" rel="noopener" data-track="cta-menu">Agendar demonstração</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ================= HERÓI =================
+         O navegador mostra capturas reais do painel, com clientes, colaboradores
+         e códigos de projeto trocados por fictícios. -->
+    <section class="hero" id="topo" aria-labelledby="hero-title">
+      <canvas class="hero__canvas" data-vortex aria-hidden="true"></canvas>
+      <div class="container hero__inner">
+        <h1 class="display hero__title" id="hero-title"><span class="w" style="--i:0">Veja</span> <span class="w" style="--i:1">o</span> <span class="w" style="--i:2">atraso</span> <span class="w" style="--i:3">da</span> <span class="w" style="--i:4">fábrica</span> <span class="tone"><span class="w" style="--i:5">antes</span> <span class="w" style="--i:6">do</span> <span class="w" style="--i:7">dia</span> <span class="w" style="--i:8">da</span> <span class="w" style="--i:9">entrega.</span></span></h1>
+        <p class="lead hero__lead">O operador aponta cada etapa pelo QR Code e o TrackTube compara com o cronograma.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--line btn--lg" href="#produto">Ver o sistema <span class="chev" aria-hidden="true">»</span></a>
+          <a class="btn btn--white btn--lg" href="https://wa.me/5512981622579?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20TrackTube." target="_blank" rel="noopener" data-track="cta-hero">Agendar demonstração</a>
+        </div>
+      </div>
+
+      <div class="container hero__stage">
+        <div class="win" data-scene="shots" data-interval="5200" data-tilt role="group" aria-label="Telas do painel web do TrackTube">
+          <div class="win__bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="win__tabs">
+              <button type="button" class="win__tab" aria-pressed="true" data-frame-tab><span class="win__tab-long">Progresso do Projeto</span><span class="win__tab-short" aria-hidden="true">Progresso</span></button>
+              <button type="button" class="win__tab" aria-pressed="false" data-frame-tab><span class="win__tab-long">Dashboard de Projetos</span><span class="win__tab-short" aria-hidden="true">Dashboard</span></button>
+              <button type="button" class="win__tab" aria-pressed="false" data-frame-tab><span class="win__tab-long">Detalhe do projeto</span><span class="win__tab-short" aria-hidden="true">Projeto</span></button>
+            </div>
+          </div>
+          <div class="win__screen">
+            <figure class="shot is-active" data-frame><picture><source media="(max-width: 760px)" srcset="img/w-progresso-m.webp"><img src="img/w-progresso-1600.webp" srcset="img/w-progresso-960.webp 960w, img/w-progresso-1600.webp 1600w" sizes="(max-width: 1296px) 100vw, 1200px" width="1600" height="1000" fetchpriority="high" alt="Tela Progresso de Projetos do TrackTube: cada projeto com o avanço real, o previsto, as datas de início e fim e o status No prazo ou Atraso."></picture></figure>
+            <figure class="shot" data-frame><picture><source media="(max-width: 760px)" srcset="img/w-dashboard-m.webp"><img src="img/w-dashboard-1600.webp" srcset="img/w-dashboard-960.webp 960w, img/w-dashboard-1600.webp 1600w" sizes="(max-width: 1296px) 100vw, 1200px" width="1600" height="1000" loading="lazy" decoding="async" alt="Dashboard de Projetos, Performance da Fabricação: total de projetos, atrasados, no prazo, não iniciados, concluídos e progresso médio."></picture></figure>
+            <figure class="shot" data-frame><picture><source media="(max-width: 760px)" srcset="img/w-projeto-m.webp"><img src="img/w-projeto-1600.webp" srcset="img/w-projeto-960.webp 960w, img/w-projeto-1600.webp 1600w" sizes="(max-width: 1296px) 100vw, 1200px" width="1600" height="1000" loading="lazy" decoding="async" alt="Detalhe de um projeto: período, duração, status, dias restantes e o cronograma macro com o planejado contra o real."></picture></figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-label="Módulos do TrackTube">
+        <div class="marquee__track">
+          <ul class="marquee__list">
+            <li><svg class="i" aria-hidden="true"><use href="#i-scan"/></svg>Apontamento por QR Code</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Previsto x real</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-box"/></svg>Check de materiais</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-pause"/></svg>Paradas com motivo</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-repeat"/></svg>Retrabalho</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-tv"/></svg>Modo TV</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Cronograma do MS Project</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-history"/></svg>Histórico de materiais</li>
+          </ul>
+          <ul class="marquee__list" aria-hidden="true">
+            <li><svg class="i"><use href="#i-scan"/></svg>Apontamento por QR Code</li>
+            <li><svg class="i"><use href="#i-chart"/></svg>Previsto x real</li>
+            <li><svg class="i"><use href="#i-box"/></svg>Check de materiais</li>
+            <li><svg class="i"><use href="#i-pause"/></svg>Paradas com motivo</li>
+            <li><svg class="i"><use href="#i-repeat"/></svg>Retrabalho</li>
+            <li><svg class="i"><use href="#i-tv"/></svg>Modo TV</li>
+            <li><svg class="i"><use href="#i-file"/></svg>Cronograma do MS Project</li>
+            <li><svg class="i"><use href="#i-history"/></svg>Histórico de materiais</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= O PRODUTO EM UMA LINHA ================= -->
+    <section class="proof" aria-label="O que o TrackTube reúne">
+      <div class="container proof__inner" data-reveal>
+        <img class="proof__logo" src="img/tracktube-branco.webp" alt="TrackTube" width="171" height="36" loading="lazy" decoding="async">
+        <span>Cronograma do MS Project, apontamento por QR Code e check de materiais no mesmo sistema.</span>
+      </div>
+    </section>
+
+    <!-- ================= PAINEL WEB ================= -->
+    <section class="section" id="produto" aria-labelledby="produto-title">
+      <div class="container">
+        <div class="split" data-reveal>
+          <h2 class="h2" id="produto-title">Previsto x real por departamento. <span class="tone">Sem montar planilha.</span></h2>
+          <p class="lead">Importe o cronograma do MS Project e acompanhe cada departamento contra o planejado. Passou da data final sem terminar, aparece como Atraso.</p>
+        </div>
+        <div class="board" data-reveal data-spotlight>
+          <div class="board__stage">
+            <div class="win" data-scene="shots" data-interval="5200" data-tilt role="group" aria-label="Telas de previsto x real do TrackTube">
+              <div class="win__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <div class="win__tabs">
+                  <button type="button" class="win__tab" aria-pressed="true" data-frame-tab><span class="win__tab-long">Avanço por departamento</span><span class="win__tab-short" aria-hidden="true">Departamentos</span></button>
+                  <button type="button" class="win__tab" aria-pressed="false" data-frame-tab><span class="win__tab-long">Relatórios Operacionais</span><span class="win__tab-short" aria-hidden="true">Relatórios</span></button>
+                  <button type="button" class="win__tab" aria-pressed="false" data-frame-tab><span class="win__tab-long">Histórico de Materiais</span><span class="win__tab-short" aria-hidden="true">Materiais</span></button>
+                </div>
+              </div>
+              <div class="win__screen">
+                <figure class="shot is-active" data-frame><picture><source media="(max-width: 760px)" srcset="img/w-departamentos-m.webp"><img src="img/w-departamentos-1600.webp" srcset="img/w-departamentos-960.webp 960w, img/w-departamentos-1600.webp 1600w" sizes="(max-width: 1296px) 100vw, 1120px" width="1600" height="1111" loading="lazy" decoding="async" alt="Progresso de um projeto: status geral com real contra previsto e prazo final, e o avanço de cada departamento com datas e status."></picture></figure>
+                <figure class="shot" data-frame><picture><source media="(max-width: 760px)" srcset="img/w-producao-m.webp"><img src="img/w-producao-1600.webp" srcset="img/w-producao-960.webp 960w, img/w-producao-1600.webp 1600w" sizes="(max-width: 1296px) 100vw, 1120px" width="1600" height="1000" loading="lazy" decoding="async" alt="Relatório de produção: semáforo operacional, progresso geral, fases em dia e atrasadas, gargalo, Auto 1min e Modo TV."></picture></figure>
+                <figure class="shot" data-frame><picture><source media="(max-width: 760px)" srcset="img/w-materiais-m.webp"><img src="img/w-materiais-1600.webp" srcset="img/w-materiais-960.webp 960w, img/w-materiais-1600.webp 1600w" sizes="(max-width: 1296px) 100vw, 1120px" width="1600" height="1000" loading="lazy" decoding="async" alt="Histórico de materiais e equipamentos: recebimentos, validações e vínculos com etapas em ordem cronológica."></picture></figure>
+              </div>
+            </div>
+          </div>
+          <ul class="trio">
+            <li><b><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Avanço por departamento</b><p>Real contra previsto, data final e status de cada departamento do projeto.</p></li>
+            <li><b><svg class="i" aria-hidden="true"><use href="#i-tv"/></svg>Relatório no Modo TV</b><p>Semáforo da linha, gargalo e ações prioritárias, atualizando a cada minuto.</p></li>
+            <li><b><svg class="i" aria-hidden="true"><use href="#i-history"/></svg>Rastreabilidade</b><p>Quem recebeu, validou ou vinculou cada item, em ordem cronológica.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= APP DO CHÃO DE FÁBRICA ================= -->
+    <section class="section" id="app" aria-labelledby="app-title">
+      <div class="container">
+        <div class="split" data-reveal>
+          <h2 class="h2" id="app-title" data-text-reveal>Um QR Code e um toque. Cada etapa apontada na hora.</h2>
+          <p class="lead">O app roda no navegador do celular, usa a câmera para ler a tag e mostra para cada pessoa só as fases que ela pode executar.</p>
+        </div>
+        <div class="cards">
+          <article class="card" data-spotlight data-reveal data-scene="shots" data-interval="3200">
+            <div class="card__visual">
+              <div class="phone-shot" data-parallax="-0.04"><div class="phone-shot__screen">
+                <figure class="shot is-active" data-frame><img src="img/a-apontamento.webp" width="600" height="1298" loading="lazy" decoding="async" alt="Apontamento de Produção com tag, ramo e unidade escolhidos, a unidade pendente e as ações Iniciar e Parada."></figure>
+                <figure class="shot" data-frame><img src="img/a-iniciar.webp" width="600" height="1298" loading="lazy" decoding="async" alt="A ação Iniciar selecionada e o botão Confirmar liberado."></figure>
+              </div></div>
+            </div>
+            <div class="card__text"><h3 class="h3">Apontamento por QR Code</h3><p>Iniciar, Finalizar ou Parada. Hora e responsável ficam gravados, e a unidade espera a etapa anterior terminar.</p></div>
+          </article>
+          <article class="card" data-spotlight data-reveal style="--d:80ms">
+            <div class="card__visual">
+              <div class="phone-shot" data-parallax="-0.04"><div class="phone-shot__screen">
+                <figure class="shot is-active"><img src="img/a-materiais.webp" width="600" height="1298" loading="lazy" decoding="async" alt="Check de materiais, etapa Produção: recebido da logística, pendentes, concluídos e o botão Bipar material."></figure>
+              </div></div>
+            </div>
+            <div class="card__text"><h3 class="h3">Check de materiais</h3><p>A logística envia, a produção recebe. Cada bipagem entra na fila e é confirmada no fim.</p></div>
+          </article>
+          <article class="card" data-spotlight data-reveal>
+            <div class="card__visual card__visual--crop">
+              <img src="img/c-motivo.webp" width="520" height="286" loading="lazy" decoding="async" alt="Registrar parada no app: motivo obrigatório entre Falta de Operador, Falta de Material, Máquina e Outros.">
+            </div>
+            <div class="card__text"><h3 class="h3">Paradas com motivo</h3><p>Os responsáveis pela fase recebem push e e-mail na hora, e a unidade fica bloqueada até alguém encerrar ou liberar.</p></div>
+          </article>
+          <article class="card" data-spotlight data-reveal style="--d:80ms">
+            <div class="card__visual card__visual--crop">
+              <img src="img/a-retrabalho-c.webp" width="640" height="812" loading="lazy" decoding="async" alt="Unidade em retrabalho no app: status Em retrabalho, SLA do ciclo, data em que foi reaberta e as ações Finalizar retrabalho e Parada.">
+            </div>
+            <div class="card__text"><h3 class="h3">Retrabalho com histórico</h3><p>Reabra a unidade e o TrackTube separa a execução original de cada ciclo, com início, fim e duração.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMO FUNCIONA (linha do tempo) ================= -->
+    <section class="section" id="como-funciona" aria-labelledby="steps-title">
+      <div class="container how">
+        <div class="how__head" data-reveal>
+          <h2 class="h2" id="steps-title">Do cronograma à primeira etapa apontada. <span class="tone">Com o que você já tem.</span></h2>
+          <p class="lead">O cronograma do MS Project e a lista de materiais em Excel são o ponto de partida.</p>
+          <div class="btn-row"><a class="btn btn--white" href="https://wa.me/5512981622579?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20TrackTube." target="_blank" rel="noopener" data-track="cta-como-funciona">Agendar demonstração</a></div>
+        </div>
+        <div class="timeline" data-trace>
+          <div class="timeline__rail" aria-hidden="true"><span class="timeline__fill"></span></div>
+          <ol class="timeline__list">
+            <li class="tstep" data-reveal>
+              <span class="tstep__num">01</span>
+              <h3 class="h3">Importe o cronograma</h3>
+              <p class="lead">Exporte o MS Project para Excel e importe. Departamentos, subfluxos, fases e datas viram o template da linha.</p>
+              <span class="tstep__tag"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Task Name, Duração, Início e Término</span>
+            </li>
+            <li class="tstep" data-reveal>
+              <span class="tstep__num">02</span>
+              <h3 class="h3">Imprima as tags</h3>
+              <p class="lead">Gere as etiquetas com QR de cada projeto e de cada material, no tamanho da sua etiqueta ou em folha A4.</p>
+              <span class="tstep__tag"><svg class="i" aria-hidden="true"><use href="#i-scan"/></svg>Modelo 80 × 25 mm já vem pronto</span>
+            </li>
+            <li class="tstep" data-reveal>
+              <span class="tstep__num">03</span>
+              <h3 class="h3">Aponte pelo celular</h3>
+              <p class="lead">Os operadores leem a tag e apontam. O painel mostra o previsto x real enquanto a fábrica trabalha.</p>
+              <span class="tstep__tag"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Sem instalar app de loja</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section" id="perguntas" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="faq__intro" data-reveal>
+          <h2 class="h2" id="faq-title">Antes de começar. <span class="tone">O que as fábricas perguntam.</span></h2>
+          <p class="body">Ficou alguma dúvida sobre o seu processo? Mande no WhatsApp e a gente responde.</p>
+          <div class="btn-row"><a class="btn btn--line" href="https://wa.me/5512981622579?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20TrackTube." target="_blank" rel="noopener" data-track="cta-faq">Tirar dúvida no WhatsApp <span class="chev" aria-hidden="true">»</span></a></div>
+        </div>
+        <div class="faq__list" data-reveal style="--d:80ms">
+          <details class="faq__item" name="faq">
+            <summary>Precisa instalar app de loja ou comprar coletor de dados?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Não. O TrackTube roda no navegador do celular e usa a câmera para ler o QR Code. Dá para instalar na tela inicial do Android e do iPhone.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Dá para aproveitar o cronograma que já existe?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Sim, se ele está no MS Project. Exporte para Excel e importe: o TrackTube lê nome da tarefa, recuo, duração, início e término. A lista de materiais também entra por planilha.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Os operadores vão conseguir usar?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Apontar é ler o QR da tag, tocar na ação e confirmar. Cada pessoa vê só as fases que tem permissão para executar, então a tela não fica cheia de opção que ela não usa.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Meus dados ficam junto com os de outras empresas?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Não. Cada empresa tem a própria instalação e o próprio banco de dados, num endereço só dela.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Integra com o meu ERP?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Hoje o cronograma e a lista de materiais entram por planilha Excel. Se você precisa de integração direta, conte na demonstração qual é o seu sistema.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Serve para a minha fábrica?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Serve para quem fabrica sob encomenda, com projetos que passam por vários departamentos e têm data de entrega. Linhas, departamentos, subfluxos e fases são cadastrados do seu jeito, então o sistema segue o processo da sua fábrica.</p>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Quanto custa?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p class="faq__answer">Depende do tamanho da operação. Na demonstração a gente entende o seu processo e depois manda a proposta.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA FINAL ================= -->
+    <section class="cta" id="comecar" aria-labelledby="cta-title">
+      <canvas class="cta__canvas" data-rain aria-hidden="true"></canvas>
+      <div class="container cta__inner" data-reveal>
+        <h2 class="display" id="cta-title">Pare de cobrar status. <span class="tone">Veja cada projeto na hora.</span></h2>
+        <p class="lead">Na demonstração você vê o apontamento, os materiais e o previsto x real funcionando.</p>
+        <div class="btn-row">
+          <a class="btn btn--line btn--lg" href="#produto">Ver o sistema <span class="chev" aria-hidden="true">»</span></a>
+          <a class="btn btn--white btn--lg" href="https://wa.me/5512981622579?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20TrackTube." target="_blank" rel="noopener" data-track="cta-final">Agendar demonstração</a>
+        </div>
+        <p class="cta__note">Ou chame no <a href="https://wa.me/5512981622579" target="_blank" rel="noopener">(12) 98162-2579</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#topo"><img class="brand__logo" src="img/tracktube-branco.webp" alt="TrackTube" width="171" height="36" loading="lazy"></a>
+          <p class="footer__about">Apontamento de produção, materiais e previsto x real para quem fabrica sob encomenda.</p>
+        </div>
+        <nav class="footer__col" aria-labelledby="f-produto">
+          <h2 class="mono" id="f-produto">Produto</h2>
+          <ul><li><a href="#produto">Previsto x real</a></li><li><a href="#app">App de apontamento</a></li><li><a href="#como-funciona">Como funciona</a></li><li><a href="#perguntas">Perguntas</a></li></ul>
+        </nav>
+        <nav class="footer__col" aria-labelledby="f-contato">
+          <h2 class="mono" id="f-contato">Contato</h2>
+          <ul><li><a href="https://wa.me/5512981622579" target="_blank" rel="noopener">WhatsApp (12) 98162-2579</a></li></ul>
+        </nav>
+      </div>
+      <div class="footer__bottom">© 2026 TrackTube</div>
+    </div>
+  </footer>
+</body>
+</html>
